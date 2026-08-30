@@ -243,11 +243,8 @@
         .sidebar-icon-svg { width: 50px; height: 50px; margin-bottom: 5px; }
         .sidebar-header h2 { margin: 0; font-size: 20px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .sidebar-link { display: inline-flex; align-items: center; gap: 6px; color: #0000aa; text-decoration: underline; font-size: 13px; margin-top: 15px; cursor: pointer; }
-        
-        /* Updated to handle anchor <a> tag styles properly */
         .download-btn { display: block; text-align: center; text-decoration: none; box-sizing: border-box; background: #e0e0e0; border: 1px solid #fff; border-bottom-color: #888; border-right-color: #888; padding: 6px 15px; font-size: 12px; margin-top: 20px; cursor: pointer; color: #000; }
         .download-btn:active { border-color: #888; border-bottom-color: #fff; border-right-color: #fff; }
-        
         .rainbow-line { width: 100%; height: 2px; background: linear-gradient(90deg, #ea4335 25%, #fbbc05 25% 50%, #34a853 50% 75%, #4285f4 75% 100%); margin: 20px 0; }
         
         .content-pane { flex: 1; padding: 30px 40px; overflow-y: scroll; background-color: #fff; user-select: text; position: relative; }
@@ -292,6 +289,7 @@
         .calc-btn.clear { color: #d32f2f; }
         .calc-btn.op { color: #0000aa; }
         
+        /* Fixed Link Clicks & Social Icons */
         .social-icons { display: flex; justify-content: center; gap: 20px; width: 100%; }
         .social-icons a { display: inline-flex; align-items: center; justify-content: center; transition: transform 0.1s; text-decoration: none; cursor: pointer; }
         .social-icons a:active { transform: scale(0.9); }
@@ -299,6 +297,30 @@
 
         .file-icon { padding: 10px; border: 1px solid transparent; border-radius: 4px; display: flex; flex-direction: column; align-items: center; }
         .file-icon:hover { background-color: rgba(0, 0, 170, 0.05); border: 1px dotted #0000aa; }
+
+        /* Project Cards */
+        .projects-grid { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 10px; }
+        .project-card { 
+            background: #fff; 
+            border: 1px solid #dfdfdf; 
+            border-radius: 8px;
+            padding: 20px; 
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.01); 
+            background-color: #f8fbff; 
+            box-shadow: 0 10px 20px rgba(0,0,170,0.1); 
+            border-color: #b0c4de;
+        }
+        .project-card h3 { margin-top: 0; margin-bottom: 10px; font-size: 18px; color: #0000aa; transition: color 0.3s ease; }
+        .project-card:hover h3 { color: #0058e6; }
+        .project-card p { margin-bottom: 15px; font-size: 13px; color: #555; }
+        .tag-container { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tech-tag { background: #eef2f5; color: #333; font-size: 11px; padding: 4px 8px; border-radius: 12px; font-weight: 600; }
+        .project-card:hover .tech-tag { background: #e0e8ff; color: #0000aa; }
     </style>
 </head>
 <body>
@@ -444,12 +466,45 @@
                 <h1 style="margin-bottom: 10px;">My Projects</h1>
                 <p>A collection of my recent work.</p>
                 <div class="projects-grid" id="projectsGrid">
-                    <p style="color: #888; font-style: italic;">Projects currently loading...</p>
+                    
+                    <div class="project-card">
+                        <h3>Railway Track Flaw Detection ↗</h3>
+                        <p>Built a system to detect flaws such as cracks and surface defects on railway tracks to identify safety hazards. Used sensors on a microcontroller to scan tracks, and processed data with ML/image detection techniques.</p>
+                        <div class="tag-container">
+                            <span class="tech-tag">Sensors</span>
+                            <span class="tech-tag">Microcontroller</span>
+                            <span class="tech-tag">ML</span>
+                            <span class="tech-tag">Image Detection</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3>College Website ↗</h3>
+                        <p>Designed and developed a website for the college end-to-end. Built a simple frontend interface and set up the backend data layer using Supabase and Firebase. Managed the full development workflow solo.</p>
+                        <div class="tag-container">
+                            <span class="tech-tag">Remix</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">Firebase</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Client Portfolio Website ↗</h3>
+                        <p>Building a portfolio website for a freelance client to showcase their work. Translating client requirements into a clean, functional site design using modern web tools.</p>
+                        <div class="tag-container">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">Remix</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
         <div class="status-bar">
-            <div class="status-bar-content">0 object(s)</div>
+            <div class="status-bar-content">3 object(s)</div>
         </div>
     </div>
 
@@ -490,7 +545,6 @@
                     <a href="#section-beyond" class="spy-link">Beyond Code</a>
                 </div>
                 
-                <!-- LINKED DOWNLOAD BUTTON -->
                 <a href="resume.pdf" download class="download-btn" style="width: 100%; margin-top: 40px;">Download Resume</a>
             </div>
 
